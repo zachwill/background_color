@@ -14,5 +14,7 @@ div ".container", ->
           p "Text"
           input "#new-text", tabindex: 2, placeholder: "#222", ->
 
-      div ".span3", ->
-        button ".btn", -> "Update"
+      div ".span4.buttons", ->
+        button ".btn.add", rel: "twipsy", title: "Change the colors", -> "Update"
+        button ".btn.undo", rel: "twipsy", title: "Use previous colors", ->
+          span ->

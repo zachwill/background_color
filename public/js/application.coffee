@@ -4,7 +4,7 @@ $ ->
   # A color model with default `background` and `text` attributes.
   class Color extends Backbone.Model
     defaults:
-      "background": "#eee"
+      "background": "#f5f5f5"
       "text": "#222"
 
 
@@ -21,7 +21,7 @@ $ ->
     # The `undo` method removes the last Color item from the collection and
     # triggers an `undo` event with the new last item.
     undo: ->
-      if @length > 2
+      if @length > 1
         @remove @last()
       @trigger 'undo', @last()
 
@@ -35,8 +35,8 @@ $ ->
     events:
       "keypress #new-background": "update_colors"
       "keypress #new-text": "update_colors"
-      "click .btn": "update_colors"
-      "click .undo": "undo_color"
+      "click .btn.add": "update_colors"
+      "click .btn.undo": "undo_color"
       "focus input": "add_hash"
       "blur input": "remove_hash"
 
@@ -84,3 +84,6 @@ $ ->
 
   # Create a new `ColorView` under the global `window.App` namespace.
   window.App = new ColorView
+
+  # Initialize Bootstrap's `twipsy` plugin.
+  $('[rel="twipsy"]').twipsy()

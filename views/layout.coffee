@@ -53,6 +53,7 @@ body ->
   # Additional JavaScript libraries and plugins.
   script src: "/js/libs/backbone.min.js"
   script src: "/js/libs/coffeescript.js"
+  script src: "/js/libs/bootstrap-twipsy.js"
 
   # And, finally our Coffee Script code.
   script src: "/js/application.coffee", type: "text/coffeescript"
