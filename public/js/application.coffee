@@ -35,6 +35,18 @@ $ ->
       @collection = new ColorList
       @collection.bind('add', @change_color)
       @collection.bind('undo', @change_color)
+      @$('input').focus(@add_hash)
+                 .blur(@remove_hash)
+
+    add_hash: (event) ->
+      self = $(@)
+      value = self.val()
+      if value is '' then self.val('#')
+
+    remove_hash: (event) ->
+      self = $(@)
+      value = self.val()
+      if value is '#' then self.val('')
 
     change_color: (color) =>
       $(@el).css
