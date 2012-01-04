@@ -50,28 +50,37 @@ $ ->
       @collection.bind('add', @change_color)
       @collection.bind('undo', @change_color)
 
+    # Add a `#` to the currently focused `input` field.
     add_hash: (event) ->
       self = $(event.target)
       value = self.val()
       if value is '' then self.val('#')
 
+    # Remove a `#` from the previously focused `input` field.
     remove_hash: (event) ->
       self = $(event.target)
       value = self.val()
       if value is '#' then self.val('')
 
+    # Change the view's `@el` element's `background` and `color` CSS.
     change_color: (color) =>
       $(@el).css
         background: color.get('background')
         color: color.get('text')
 
+    # Create a new `Color` model if the current `event` was either an Enter
+    # `keypress` or `click`. The model is created using the values from the
+    # `input` fields.
     update_colors: (event) ->
       if event.keyCode is 13 or event.type is "click"
         @collection.create
           background: @background.val()
           text: @text.val()
 
+    # Invoke the `undo` method on this view's `ColorList` collection.
     undo_color: (event) ->
       @collection.undo()
 
+
+  # Create a new `ColorView` under the global `window.App` namespace.
   window.App = new ColorView
