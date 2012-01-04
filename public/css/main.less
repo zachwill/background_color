@@ -1,0 +1,39 @@
+@import "bootstrap/mixins.less";
+
+@pink: #be1a8d;
+
+.custom-highlight{
+    background: @pink;
+    color: #fff;
+    text-shadow: -1px 1px 1px darken(@pink, 15%);
+}
+
+/* Apply custom highlight */
+::-moz-selection{ .custom-highlight; }
+::selection { .custom-highlight; }
+
+textarea{
+    resize: vertical;
+}
+
+#main{
+    margin: 50px 0;
+}
+
+.hero-unit{
+    h1{
+        color: inherit;
+    }
+    .btn{
+        margin-top: 33px;
+    }
+    .colors{
+        margin-top: 15px;
+    }
+    label p{
+        color: #888;
+        font-size: 13px;
+        margin-bottom: 0;
+        text-align: left;
+    }
+}
