@@ -14,7 +14,7 @@ head ->
   meta charset: "utf-8"
   meta "http-equiv": "X-UA-Compatible", content: "IE=Edge;chrome=1"
 
-  title @title or "yoursite.com"
+  title "Backbone.js Background Color"
 
   meta name: "description", content: ""
   meta name: "author", content: ""
