@@ -1,6 +1,6 @@
 {
   "name": "backbone-background-color",
-  "author": "Zach Williams"
+  "author": "Zach Williams",
   "version": "1.0.0",
   "dependencies": {
     "zappa": ">= 0.3",
