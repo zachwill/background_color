@@ -8,7 +8,7 @@ div ".container", ->
         p "Background"
         div ->
           span ".add-on", -> "#"
-          input "#new-background", tabindex: 1, placeholder: "eee", ->
+          input "#new-background", tabindex: 1, placeholder: "f5f5f5", ->
 
       label ".input-prepend.span4", ->
         p "Text"
