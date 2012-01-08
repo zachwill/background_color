@@ -16,3 +16,6 @@ require('zappa') PORT, ->
 
   @get '/': ->
     @render 'home'
+
+  @get '/docs': ->
+    console.log String(@send)

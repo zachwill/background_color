@@ -37,8 +37,6 @@ $ ->
       "keypress #new-text": "update_colors"
       "click .btn.add": "update_colors"
       "click .btn.undo": "undo_color"
-      "focus input": "add_hash"
-      "blur input": "remove_hash"
 
     # On initialization, the two inputs are saved as `@text` and `@background`.
     # A new `ColorList` collection is created and functions are bound to both
@@ -50,32 +48,38 @@ $ ->
       @collection.bind('add', @change_color)
       @collection.bind('undo', @change_color)
 
-    # Add a `#` to the currently focused `input` field.
-    add_hash: (event) ->
-      self = $(event.target)
-      value = self.val()
-      if value is '' then self.val('#')
-
-    # Remove a `#` from the previously focused `input` field.
-    remove_hash: (event) ->
-      self = $(event.target)
-      value = self.val()
-      if value is '#' then self.val('')
-
     # Change the view's `@el` element's `background` and `color` CSS.
     change_color: (color) =>
+      [background, text] = [color.get('background'), color.get('text')]
       $(@el).css
-        background: color.get('background')
-        color: color.get('text')
+        background: background
+        color: text
+      if @collection.length > 1
+        background = background.replace("#", "")
+        text = text.replace("#", "")
+      else
+        [background, text] = ["", ""]
+      @background.val(background)
+      @text.val(text)
 
     # Create a new `Color` model if the current `event` was either an Enter
     # `keypress` or `click`. The model is created using the values from the
     # `input` fields.
     update_colors: (event) ->
       if event.keyCode is 13 or event.type is "click"
+        background = @check_hash @background.val()
+        text = @check_hash @text.val()
         @collection.create
-          background: @background.val()
-          text: @text.val()
+          background: background
+          text: text
+
+    # Check to see if a hash needs to be added to the color value.
+    check_hash: (color) ->
+      regex = /[0-9a-fA-F]/g
+      match = color.match(regex)
+      if match and match.length is color.length
+        color = "#" + color
+      color
 
     # Invoke the `undo` method on this view's `ColorList` collection.
     undo_color: (event) ->

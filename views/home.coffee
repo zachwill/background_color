@@ -4,15 +4,17 @@ div ".container", ->
     p ".tagline", -> "Change this element's background and text colors using the form below."
 
     div ".row.colors", ->
-      div ".span4", ->
-        label ->
-          p "Background"
-          input "#new-background", tabindex: 1, placeholder: "#eee", ->
+      label ".input-prepend.span4", ->
+        p "Background"
+        div ->
+          span ".add-on", -> "#"
+          input "#new-background", tabindex: 1, placeholder: "eee", ->
 
-      div ".span4", ->
-        label ->
-          p "Text"
-          input "#new-text", tabindex: 2, placeholder: "#222", ->
+      label ".input-prepend.span4", ->
+        p "Text"
+        div ->
+          span ".add-on", -> "#"
+          input "#new-text", tabindex: 2, placeholder: "222", ->
 
       div ".span4.buttons", ->
         button ".btn.add", rel: "twipsy", title: "Change the colors", -> "Update"
